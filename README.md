@@ -32,6 +32,10 @@ The game UI displays the following information about the spaceship:
 * Input Management: Utilize Unity's Input System.
 * Assets: Any assets for UI and graphics can be used, as their quality is not considered in the evaluation.
 
+## Collision Convention
+
+Every object detects itself collision with every objects it need to have a collision logic with. There's no middleware that notifies both objects about collision. Collision is detects via Unity Colliders (Movement is not Unity's physics based, see Restrictions).
+
 ## Restrictions:
 * Do not use third-party frameworks.
 * Avoid Singleton pattern.
