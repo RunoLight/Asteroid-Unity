@@ -25,7 +25,7 @@ The game UI displays the following information about the spaceship:
 
 ## Development Details
 * Programming Language: C#
-* Project Setup: Unity 2022.3+
+* Project Setup: Unity 2022.3.25f1, Target Platform: Windows
 * Game Logic and Presentation: Separated to ensure a clean architecture.
 * Game Logic Classes: Should not inherit from MonoBehaviour.
 * Assembly Definitions: Must be used.
