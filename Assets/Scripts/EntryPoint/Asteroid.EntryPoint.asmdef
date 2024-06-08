@@ -3,7 +3,8 @@
     "rootNamespace": "Asteroid",
     "references": [
         "GUID:8f67665c1b67459ca5296e5adc77e698",
-        "GUID:f81e874ccf1144049aab0230c945e3b7"
+        "GUID:f81e874ccf1144049aab0230c945e3b7",
+        "GUID:0c00018cdc70c424a803ad441923952a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
