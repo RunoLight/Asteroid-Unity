@@ -9,8 +9,6 @@ using UnityEngine;
 
 namespace Asteroid.GameLogic.Ship
 {
-    // TODO Teleport player to (0;0) when restart
-    // TODO Show final score when died
     public class ShipController : IObjectRotationAdapter, IDisposable
     {
         public event Action OnDied;
@@ -93,11 +91,11 @@ namespace Asteroid.GameLogic.Ship
 
         public void ChangeState(ShipStates shipStates)
         {
-            if (state is ShipStateMoving movingState2)
+            if (state is ShipStateMoving stateMoving)
             {
-                playerInput.Forward -= movingState2.OnInputForward;
-                playerInput.Rotate -= movingState2.OnInputRotate;
-                playerInput.ActivateLaser -= movingState2.OnInputUseLaser;
+                playerInput.Forward -= stateMoving.OnInputForward;
+                playerInput.Rotate -= stateMoving.OnInputRotate;
+                playerInput.ActivateLaser -= stateMoving.OnInputUseLaser;
             }
             
             state?.Dispose();
@@ -105,7 +103,7 @@ namespace Asteroid.GameLogic.Ship
             // TODO It may be a states factory
             state = shipStates switch
             {
-                ShipStates.WaitingToStart => new ShipStateWaitingToStart(this, new ShipStateWaitingToStart.Settings()
+                ShipStates.WaitingToStart => new ShipStateWaitingToStart(this, new ShipStateWaitingToStart.Settings
                 {
                     amplitude = 0.5f,
                     frequency = 1f,
@@ -113,10 +111,7 @@ namespace Asteroid.GameLogic.Ship
                 }),
                 ShipStates.Moving => new ShipStateMoving(this, shipGunController, shipLaserGunController),
                 ShipStates.Dead => new ShipStateDead(
-                    new ShipStateDead.Settings
-                    {
-                        explosionForce = 1f
-                    },
+                    new ShipStateDead.Settings { explosionForce = 1f },
                     this,
                     new MonoFactory<ShipExplosion>(explosion as ShipExplosion, true, null),
                     new MonoFactory<BrokenShip>(brokenShip as BrokenShip, true, null)

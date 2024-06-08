@@ -21,6 +21,8 @@ namespace Asteroid.GameLogic.Ship.States
             this.defaultGun = defaultGun;
             this.laserGun = laserGun;
 
+            ship.Position = Vector2.zero;
+
             laserGun.OnDisabled += defaultGun.Enable;
 
             defaultGun.Enable();
