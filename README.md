@@ -36,9 +36,45 @@ The game UI displays the following information about the spaceship:
 
 Every object detects itself collision with every objects it need to have a collision logic with. There's no middleware that notifies both objects about collision. Collision is detects via Unity Colliders (Movement is not Unity's physics based, see Restrictions).
 
+## Game Modules (Assembly Definitions/.asmdef):
+
+```
+Assemblies:
+
+1) Asteroid.Presentation.Abstraction - Abstractions on all presentations/views of the game
+
+2) Asteroid.Presentation - Implementation of presentation/view game part
+┣━Asteroid.Presentation.Abstraction
+┗━Unity.TextMeshPro
+
+3) Asteroid.Input - Scripts to support input actions & Auto-generated InputSystem input actions
+┗━Unity.InputSystem
+
+4) Asteroid.GameLogic - Game Logic implementation, fully dependent on abstractions
+┗━Asteroid.Presentation.Abstraction
+
+5) Asteroid.EntryPoint - Entry Point that initializes everything and passes all the dependencies implementations into logic classes
+┣━Asteroid.GameLogic
+┣━Asteroid.Presentation
+┣━Asteroid.Presentation.Abstraction
+┗━Asteroid.Input
+
+Assemblies dependency tree:
+
+Asteroid.EntryPoint
+┣━Asteroid.GameLogic
+┃ ┗━Asteroid.Presentation.Abstraction
+┣━Asteroid.Presentation
+┃ ┣━Asteroid.Presentation.Abstraction
+┃ ┗━Unity.TextMeshPro
+┣━Asteroid.Presentation.Abstraction
+┗━Asteroid.Input
+  ┗━Unity.InputSystem
+```
+
 ## Restrictions:
 * Do not use third-party frameworks.
-* Avoid Singleton pattern.
+* No Singleton pattern.
 * Do not use preview or experimental versions of Unity packages.
 * Do not use Unity's physics system for object movement.
 
