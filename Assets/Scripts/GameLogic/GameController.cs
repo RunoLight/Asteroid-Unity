@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Asteroid.GameLogic.Abstraction;
 using Asteroid.GameLogic.EntityManagement.Manager;
 using Asteroid.GameLogic.Factories;
 using Asteroid.GameLogic.Factories.Concrete;
 using Asteroid.GameLogic.Ship;
 using Asteroid.GameLogic.SpawnStrategy;
 using Asteroid.GameLogic.UseCases;
+using Asteroid.Presentation.Abstractions;
 using Asteroid.Presentation.Entity.Abstractions;
 using Asteroid.Presentation.Entity.Ship.Abstractions;
 using Asteroid.Presentation.Ui.Abstractions;
@@ -42,7 +42,7 @@ namespace Asteroid.GameLogic
             Camera camera,
             IShipPresentation shipPresentation,
             IShipGun shipGunPresentation, IShipLaserGun shipLaserGunPresentation,
-            IShipExplosion explosion, IBrokenShip brokenShip,
+            IFactory<IShipExplosion> explosionFactory, IFactory<IBrokenShip> brokenShipFactory,
             IFactory<IAsteroidPresentation> asteroidPresentationFactory,
             IFactory<IBulletPresentation> bulletPresentationFactory,
             IMemoryPool bulletPresentationMemoryPool,
@@ -52,7 +52,6 @@ namespace Asteroid.GameLogic
             RandomizedEntityFactorySettings ufoEntityFactorySettings,
             AutoSpawnStrategySettings ufoAutoSpawnStrategySettings,
             IPlayerInput playerInput
-        
             )
         {
             this.gameplayUiScreen = gameplayUiScreen;
@@ -68,9 +67,8 @@ namespace Asteroid.GameLogic
 
             ship = new ShipController(
                 shipPresentation,
-                shipGun,
-                shipLaserGun,
-                explosion, brokenShip,
+                shipGun, shipLaserGun,
+                explosionFactory, brokenShipFactory,
                 playerInput
             );
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Asteroid.GameLogic.Abstraction
+namespace Asteroid.Presentation.Abstractions
 {
     public interface IPlayerInput
     {

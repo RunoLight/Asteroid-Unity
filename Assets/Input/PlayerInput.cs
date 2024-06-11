@@ -1,8 +1,8 @@
 ﻿using System;
-using Asteroid.GameLogic.Abstraction;
+using Asteroid.Presentation.Abstractions;
 using UnityEngine.InputSystem;
 
-namespace Asteroid.GameLogic
+namespace Asteroid.Input
 {
     public class PlayerInput : GameInputActions.IPlayerActions, IDisposable, IPlayerInput
     {

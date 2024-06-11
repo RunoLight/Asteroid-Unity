@@ -1,9 +1,7 @@
 ﻿using System;
-using Asteroid.GameLogic.Abstraction;
 using Asteroid.GameLogic.Factories;
 using Asteroid.GameLogic.Ship.States;
 using Asteroid.Presentation.Abstractions;
-using Asteroid.Presentation.Entity.Ship;
 using Asteroid.Presentation.Entity.Ship.Abstractions;
 using UnityEngine;
 
@@ -22,15 +20,15 @@ namespace Asteroid.GameLogic.Ship
         private readonly ShipGunController shipGunController;
         private readonly ShipLaserGunController shipLaserGunController;
 
-        private readonly IShipExplosion explosion;
-        private readonly IBrokenShip brokenShip;
+        private readonly IFactory<IShipExplosion> explosionFactory;
+        private readonly IFactory<IBrokenShip> brokenShipFactory;
         private readonly IPlayerInput playerInput;
 
         public ShipController(
             IShipPresentation shipPresentation,
             ShipGunController shipGunController,
             ShipLaserGunController shipLaserGunController,
-            IShipExplosion shipExplosion, IBrokenShip brokenShip,
+            IFactory<IShipExplosion> shipExplosion, IFactory<IBrokenShip> brokenShip,
             IPlayerInput playerInput
         )
         {
@@ -39,8 +37,8 @@ namespace Asteroid.GameLogic.Ship
             this.shipLaserGunController = shipLaserGunController;
             positionAdapter = shipPresentation;
             rotationAdapter = shipPresentation;
-            explosion = shipExplosion;
-            this.brokenShip = brokenShip;
+            explosionFactory = shipExplosion;
+            brokenShipFactory = brokenShip;
             this.playerInput = playerInput;
 
             shipPresentation.OnLethalCollided += OnCollision;
@@ -113,8 +111,8 @@ namespace Asteroid.GameLogic.Ship
                 ShipStates.Dead => new ShipStateDead(
                     new ShipStateDead.Settings { explosionForce = 1f },
                     this,
-                    new MonoFactory<ShipExplosion>(explosion as ShipExplosion, true, null),
-                    new MonoFactory<BrokenShip>(brokenShip as BrokenShip, true, null)
+                    explosionFactory,
+                    brokenShipFactory
                 ),
                 _ => throw new ArgumentOutOfRangeException(nameof(shipStates), shipStates, null)
             };

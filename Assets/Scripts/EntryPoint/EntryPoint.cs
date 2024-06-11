@@ -2,6 +2,7 @@
 using Asteroid.GameLogic.Factories;
 using Asteroid.GameLogic.Factories.Concrete;
 using Asteroid.GameLogic.SpawnStrategy;
+using Asteroid.Input;
 using Asteroid.Presentation.Entity;
 using Asteroid.Presentation.Entity.Ship;
 using Asteroid.Presentation.Ui;
@@ -52,7 +53,8 @@ namespace Asteroid.EntryPoint
                 gameCamera,
                 shipPresentation,
                 shipGunPresentation, shipLaserGunPresentation,
-                explosion, brokenShip,
+                new MonoFactory<ShipExplosion>(explosion, true, null),
+                new MonoFactory<BrokenShip>(brokenShip, true, null),
                 new MonoFactory<AsteroidPresentation>(asteroidPresentationPrefab, true, asteroidParent),
                 bulletMemoryPool, bulletMemoryPool,
                 new MonoFactory<UfoPresentation>(ufoPresentationPrefab, true, ufoParent),

@@ -1,9 +1,7 @@
 {
-    "name": "Asteroid.GameLogic",
+    "name": "Asteroid.Presentation.Abstraction",
     "rootNamespace": "Asteroid",
-    "references": [
-        "GUID:8de0d8e76ad34082a6b5b4d7dbe49bbf"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

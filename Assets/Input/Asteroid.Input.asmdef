@@ -1,8 +1,9 @@
 {
     "name": "Asteroid.Input",
-    "rootNamespace": "",
+    "rootNamespace": "Asteroid",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:8de0d8e76ad34082a6b5b4d7dbe49bbf"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
