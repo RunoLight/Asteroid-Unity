@@ -59,6 +59,8 @@ Assemblies:
 ┣━Asteroid.Presentation.Abstraction
 ┗━Asteroid.Input
 
+6) Asteroid.Editor - Editor scripts for displaying readme and github links
+
 Assemblies dependency tree:
 
 Asteroid.EntryPoint
@@ -70,6 +72,7 @@ Asteroid.EntryPoint
 ┣━Asteroid.Presentation.Abstraction
 ┗━Asteroid.Input
   ┗━Unity.InputSystem
+Asteroid.Editor
 ```
 
 ## Restrictions:
