@@ -19,6 +19,7 @@ In this game, the player controls a spaceship that can rotate left and right, mo
 The spaceship is equipped with two types of weapons:
 
 * Bullets: When bullets hit an asteroid, the asteroid breaks into smaller, faster-moving fragments. Bullets can also destroy these fragments and UFO. Disappear when destroys anything.
+  * Bullet views are using <b>Object Pool</b> to save resources on create-destroy operations.
 * Laser: The laser destroys all objects it collide with. The player has a limited number of laser shots, which replenish over time.
 
 ### Game Mechanics
