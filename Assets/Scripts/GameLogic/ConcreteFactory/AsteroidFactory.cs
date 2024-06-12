@@ -1,6 +1,7 @@
 ﻿using Asteroid.Presentation.Entity.Abstractions;
+using Factory;
 
-namespace Asteroid.GameLogic.Factories.Concrete
+namespace Asteroid.GameLogic.ConcreteFactory
 {
     public class AsteroidFactory : RandomizedEntityFactory<EntityManagement.Entity.Asteroid, IAsteroidPresentation>
     {

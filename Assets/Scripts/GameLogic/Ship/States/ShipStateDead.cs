@@ -1,6 +1,6 @@
 using System;
-using Asteroid.GameLogic.Factories;
 using Asteroid.Presentation.Entity.Ship.Abstractions;
+using Factory;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

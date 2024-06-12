@@ -1,8 +1,9 @@
 ﻿using Asteroid.GameLogic.EntityManagement;
 using Asteroid.Presentation.Entity.Abstractions;
+using Factory;
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Factories.Concrete
+namespace Asteroid.GameLogic.ConcreteFactory
 {
     public class RandomizedEntityFactory<TEntity, TPresentation> : BaseEntityFactory<TEntity, TPresentation>
         where TEntity : GameEntity<TEntity, TPresentation>, new()

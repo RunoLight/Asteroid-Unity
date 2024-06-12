@@ -2,7 +2,8 @@
     "name": "Asteroid.GameLogic",
     "rootNamespace": "Asteroid",
     "references": [
-        "GUID:8de0d8e76ad34082a6b5b4d7dbe49bbf"
+        "GUID:8de0d8e76ad34082a6b5b4d7dbe49bbf",
+        "GUID:2a4b8f8432c14e3696d7a54dfa52ff31"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

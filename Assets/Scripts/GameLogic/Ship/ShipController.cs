@@ -1,8 +1,8 @@
 ﻿using System;
-using Asteroid.GameLogic.Factories;
 using Asteroid.GameLogic.Ship.States;
 using Asteroid.Presentation.Abstractions;
 using Asteroid.Presentation.Entity.Ship.Abstractions;
+using Factory;
 using UnityEngine;
 
 namespace Asteroid.GameLogic.Ship

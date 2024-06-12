@@ -1,4 +1,4 @@
-﻿namespace Asteroid.GameLogic.Factories
+﻿namespace Factory
 {
     public class MemoryPool<TValue> : MemoryPoolBase<TValue>, IMemoryPool<TValue>, IFactory<TValue>
     {

@@ -1,4 +1,4 @@
-﻿namespace Asteroid.GameLogic.Factories
+﻿namespace Factory
 {
     public interface IFactory<out TValue>
     {

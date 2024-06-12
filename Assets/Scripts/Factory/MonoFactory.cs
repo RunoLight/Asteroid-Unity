@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Factories
+namespace Factory
 {
     public class MonoFactory<TValue> : IFactory<TValue> where TValue : MonoBehaviour
     {

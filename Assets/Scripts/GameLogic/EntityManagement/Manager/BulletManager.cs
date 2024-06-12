@@ -1,6 +1,6 @@
 ﻿using Asteroid.GameLogic.EntityManagement.Entity;
-using Asteroid.GameLogic.Factories;
 using Asteroid.GameLogic.SpawnStrategy;
+using Factory;
 using UnityEngine;
 
 namespace Asteroid.GameLogic.EntityManagement.Manager

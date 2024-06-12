@@ -70,10 +70,14 @@ Assemblies:
 
 6) Asteroid.Editor - Editor scripts for displaying readme and github links
 
+7) Factory - Set of factory and memory pool abstractions and base realization for Unity.Object's
+
 Assemblies dependency tree:
 
 Asteroid.EntryPoint
+┣━Factory
 ┣━Asteroid.GameLogic
+┃ ┣━Factory
 ┃ ┗━Asteroid.Presentation.Abstraction
 ┣━Asteroid.Presentation
 ┃ ┣━Asteroid.Presentation.Abstraction
@@ -82,6 +86,7 @@ Asteroid.EntryPoint
 ┗━Asteroid.Input
   ┗━Unity.InputSystem
 Asteroid.Editor
+Factory
 ```
 
 ## Restrictions:

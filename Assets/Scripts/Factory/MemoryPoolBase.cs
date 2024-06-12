@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 
-namespace Asteroid.GameLogic.Factories
+namespace Factory
 {
     public enum PoolExpandMethods
     {

@@ -1,8 +1,9 @@
 ﻿using Asteroid.GameLogic.EntityManagement.Entity;
 using Asteroid.Presentation.Abstractions;
 using Asteroid.Presentation.Entity.Abstractions;
+using Factory;
 
-namespace Asteroid.GameLogic.Factories.Concrete
+namespace Asteroid.GameLogic.ConcreteFactory
 {
     public class UfoFactory : RandomizedEntityFactory<Ufo, IUfoPresentation>
     {

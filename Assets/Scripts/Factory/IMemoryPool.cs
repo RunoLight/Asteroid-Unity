@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Asteroid.GameLogic.Factories
+namespace Factory
 {
     public interface IMemoryPool
     {

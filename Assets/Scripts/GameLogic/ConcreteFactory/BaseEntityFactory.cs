@@ -1,8 +1,9 @@
 ﻿using Asteroid.GameLogic.EntityManagement;
 using Asteroid.Presentation.Entity.Abstractions;
+using Factory;
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Factories.Concrete
+namespace Asteroid.GameLogic.ConcreteFactory
 {
     public abstract class BaseEntityFactory<TEntity, TPresentation> : IFactory<TEntity>
         where TEntity : GameEntity<TEntity, TPresentation>, new()

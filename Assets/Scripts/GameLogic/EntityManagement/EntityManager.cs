@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Asteroid.GameLogic.Factories;
 using Asteroid.GameLogic.SpawnStrategy;
+using Factory;
 using JetBrains.Annotations;
 
 namespace Asteroid.GameLogic.EntityManagement

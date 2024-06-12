@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroid.GameLogic.Factories
+namespace Factory
 {
     public sealed class MonoMemoryPool<TValue> : MemoryPool<TValue> where TValue : MonoBehaviour
     {

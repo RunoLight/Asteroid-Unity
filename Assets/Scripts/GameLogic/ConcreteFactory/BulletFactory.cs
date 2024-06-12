@@ -1,8 +1,9 @@
 ﻿using Asteroid.GameLogic.EntityManagement.Entity;
 using Asteroid.Presentation.Entity.Abstractions;
+using Factory;
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Factories.Concrete
+namespace Asteroid.GameLogic.ConcreteFactory
 {
     public class BulletFactory : BaseEntityFactory<Bullet, IBulletPresentation>
     {

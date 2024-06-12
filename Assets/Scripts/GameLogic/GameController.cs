@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Asteroid.GameLogic.ConcreteFactory;
 using Asteroid.GameLogic.EntityManagement.Manager;
-using Asteroid.GameLogic.Factories;
-using Asteroid.GameLogic.Factories.Concrete;
 using Asteroid.GameLogic.Ship;
 using Asteroid.GameLogic.SpawnStrategy;
 using Asteroid.GameLogic.UseCases;
@@ -10,6 +9,7 @@ using Asteroid.Presentation.Abstractions;
 using Asteroid.Presentation.Entity.Abstractions;
 using Asteroid.Presentation.Entity.Ship.Abstractions;
 using Asteroid.Presentation.Ui.Abstractions;
+using Factory;
 using UnityEngine;
 
 namespace Asteroid.GameLogic

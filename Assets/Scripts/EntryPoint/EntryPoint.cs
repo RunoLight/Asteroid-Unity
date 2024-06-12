@@ -1,11 +1,11 @@
 ﻿using Asteroid.GameLogic;
-using Asteroid.GameLogic.Factories;
-using Asteroid.GameLogic.Factories.Concrete;
+using Asteroid.GameLogic.ConcreteFactory;
 using Asteroid.GameLogic.SpawnStrategy;
 using Asteroid.Input;
 using Asteroid.Presentation.Entity;
 using Asteroid.Presentation.Entity.Ship;
 using Asteroid.Presentation.Ui;
+using Factory;
 using UnityEngine;
 
 namespace Asteroid.EntryPoint
