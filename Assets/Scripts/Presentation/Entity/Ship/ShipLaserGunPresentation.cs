@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Asteroid.Presentation.Entity.Ship
 {
-    public class ShipLaserGunPresentation : MonoBehaviour, IShipLaserGun
+    public class ShipLaserGunPresentation : MonoBehaviour, IShipLaserGunPresentation
     {
-        private ILaserBeamPresentation LaserBeam => laserBeamPresentation;
-
         [SerializeField] private LaserBeamPresentation laserBeamPresentation;
+
+        private ILaserBeamPresentation LaserBeam => laserBeamPresentation;
 
         public void SetLaserBeamActive(bool isActive)
         {

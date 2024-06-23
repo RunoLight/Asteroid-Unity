@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Ship.States
+namespace Asteroid.GameLogic.TheShip.States
 {
-    public sealed class ShipStateMoving : ShipState
+    public sealed class ShipStateGameplay : ShipState
     {
-        private readonly ShipController ship;
-        private readonly ShipGunController defaultGun;
-        private readonly ShipLaserGunController laserGun;
+        private readonly Ship ship;
+        private readonly ShipBulletGuns defaultGun;
+        private readonly ShipLaserGun laserGun;
 
         private Vector2 velocity = Vector2.zero;
         private float lookDirection;
@@ -15,32 +15,28 @@ namespace Asteroid.GameLogic.Ship.States
         private float inputRotation; /* Negative is Left, Positive is Right */
         private bool inputUseLaser;
 
-        public ShipStateMoving(ShipController ship, ShipGunController defaultGun, ShipLaserGunController laserGun)
+        public ShipStateGameplay(Ship ship, ShipBulletGuns defaultGun, ShipLaserGun laserGun)
         {
             this.ship = ship;
             this.defaultGun = defaultGun;
             this.laserGun = laserGun;
+        }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            laserGun.OnDisabled -= defaultGun.Enable;
+        }
+
+        public override void Start()
+        {
             ship.Position = Vector2.zero;
+            defaultGun.Enable();
+
+            ship.SetEngineParticles(true);
 
             laserGun.OnDisabled += defaultGun.Enable;
-
-            defaultGun.Enable();
-        }
-
-        public void OnInputForward(bool isActive)
-        {
-            inputForward = isActive;
-        }
-
-        public void OnInputRotate(float direction)
-        {
-            inputRotation = direction;
-        }
-
-        public void OnInputUseLaser(bool isActive)
-        {
-            inputUseLaser = isActive;
         }
 
         public override void Tick(float deltaTime)
@@ -81,25 +77,32 @@ namespace Asteroid.GameLogic.Ship.States
                 velocity += v * speedIncreaseForward;
             }
 
-            ship.Rotation = Quaternion.Euler(0, 0, -lookDirection);
+            ship.Value = Quaternion.Euler(0, 0, -lookDirection);
             ship.Velocity = velocity;
-        }
-
-        public override void Start()
-        {
-            ship.SetEngineParticles(true);
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-
-            laserGun.OnDisabled -= defaultGun.Enable;
         }
 
         public override void OnCollision()
         {
-            ship.ChangeState(ShipStates.Dead);
+            ship.ChangeState(Ship.StateGameOver);
         }
+
+        #region Input Subscribers
+
+        public void OnInputForward(bool isActive)
+        {
+            inputForward = isActive;
+        }
+
+        public void OnInputRotate(float direction)
+        {
+            inputRotation = direction;
+        }
+
+        public void OnInputUseLaser(bool isActive)
+        {
+            inputUseLaser = isActive;
+        }
+
+        #endregion
     }
 }

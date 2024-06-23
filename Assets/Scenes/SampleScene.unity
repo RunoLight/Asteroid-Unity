@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPresentation: {fileID: 1322069573}
-  shipGunPresentation: {fileID: 83590791}
+  shipBulletGunPresentation: {fileID: 83590791}
   shipLaserGunPresentation: {fileID: 841549083}
   asteroidPresentationPrefab: {fileID: 2763389367622831316, guid: ab7b63d38dfd13a4e9b046c73768f988, type: 3}
   bulletPresentationPrefab: {fileID: 2034606958718270700, guid: 5ef5a422876e20547bf062d42a078d90, type: 3}

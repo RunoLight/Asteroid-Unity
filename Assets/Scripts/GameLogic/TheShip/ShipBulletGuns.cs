@@ -3,9 +3,9 @@ using Asteroid.Presentation.Abstractions;
 using Asteroid.Presentation.Entity.Ship.Abstractions;
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Ship
+namespace Asteroid.GameLogic.TheShip
 {
-    public class ShipGunController
+    public class ShipBulletGuns
     {
         public event Action<Vector2, Quaternion> BulletShotRequested;
 
@@ -17,7 +17,7 @@ namespace Asteroid.GameLogic.Ship
 
         private const float OriginalShootCooldown = 0.15f;
 
-        public ShipGunController(IShipGun shipGunPresentation)
+        public ShipBulletGuns(IShipGun shipGunPresentation)
         {
             this.shipGunPresentation = shipGunPresentation;
         }
@@ -53,7 +53,7 @@ namespace Asteroid.GameLogic.Ship
                 return;
 
             shootCooldownRemaining += OriginalShootCooldown;
-            Shoot(rotationAdapter.Rotation);
+            Shoot(rotationAdapter.Value);
         }
 
         private void Shoot(Quaternion lookDirection)

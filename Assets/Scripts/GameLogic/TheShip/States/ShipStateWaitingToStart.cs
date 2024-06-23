@@ -1,23 +1,19 @@
 using System;
 using UnityEngine;
 
-namespace Asteroid.GameLogic.Ship.States
+namespace Asteroid.GameLogic.TheShip.States
 {
     public class ShipStateWaitingToStart : ShipState
     {
         private readonly Settings settings;
-        private readonly ShipController ship;
+        private readonly Ship ship;
 
         private float theta;
 
-        public ShipStateWaitingToStart(ShipController ship, Settings settings)
+        public ShipStateWaitingToStart(Ship ship, Settings settings)
         {
             this.settings = settings;
             this.ship = ship;
-        }
-
-        public override void FixedTick(float fixedDeltaTime)
-        {
         }
 
         public override void Start()
@@ -32,9 +28,20 @@ namespace Asteroid.GameLogic.Ship.States
             theta += deltaTime * settings.frequency;
         }
 
+        public override void FixedTick(float fixedDeltaTime)
+        {
+        }
+
         [Serializable]
         public class Settings
         {
+            public static Settings Default = new()
+            {
+                amplitude = 0.5f,
+                frequency = 1f,
+                startOffset = Vector3.zero
+            };
+
             public Vector3 startOffset;
             public float amplitude;
             public float frequency;

@@ -5,13 +5,13 @@ namespace Asteroid.GameLogic.EntityManagement.Entity
 {
     public class Ufo : GameEntity<Ufo, IUfoPresentation>
     {
-        private IObjectPositionAdapter targetToFollow;
+        private IObjectPositionAdapter followingTargetPosition;
 
         private const float Speed = 2f;
 
         public Ufo Initialize(IObjectPositionAdapter target)
         {
-            targetToFollow = target;
+            followingTargetPosition = target;
             return this;
         }
 
@@ -36,7 +36,7 @@ namespace Asteroid.GameLogic.EntityManagement.Entity
 
         public override void FixedTick(float fixedDeltaTime)
         {
-            Velocity = (targetToFollow.Position - Presentation.Position).normalized * Speed;
+            Velocity = (followingTargetPosition.Value - Presentation.Position).normalized * Speed;
             Presentation.Position += Velocity * fixedDeltaTime;
         }
     }

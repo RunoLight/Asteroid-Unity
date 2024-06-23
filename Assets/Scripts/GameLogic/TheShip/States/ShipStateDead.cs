@@ -4,12 +4,12 @@ using Factory;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Asteroid.GameLogic.Ship.States
+namespace Asteroid.GameLogic.TheShip.States
 {
     public class ShipStateDead : ShipState
     {
         private readonly Settings settings;
-        private readonly ShipController ship;
+        private readonly Ship ship;
         private readonly IFactory<IShipExplosion> explosionFactory;
         private readonly IFactory<IBrokenShip> brokenShipFactory;
 
@@ -17,7 +17,7 @@ namespace Asteroid.GameLogic.Ship.States
         private IShipExplosion explosion;
 
         public ShipStateDead(
-            Settings settings, ShipController ship,
+            Ship ship, Settings settings,
             IFactory<IShipExplosion> explosionFactory,
             IFactory<IBrokenShip> brokenShipFactory
         )
@@ -28,8 +28,13 @@ namespace Asteroid.GameLogic.Ship.States
             this.brokenShipFactory = brokenShipFactory;
         }
 
-        public override void FixedTick(float fixedDeltaTime)
+        public override void Dispose()
         {
+            ship.Enabled = true;
+
+            if (!explosion.IsDestroyedViaLifetimeExpiration)
+                explosion.Destroy();
+            brokenShip.Destroy();
         }
 
         public override void Start()
@@ -47,25 +52,22 @@ namespace Asteroid.GameLogic.Ship.States
             var randomTheta = Random.Range(0, Mathf.PI * 2.0f);
             var randomDir = new Vector3(Mathf.Cos(randomTheta), Mathf.Sin(randomTheta), 0);
 
-            brokenShip.Setup(ship.Position, ship.Rotation, randomDir * settings.explosionForce);
-        }
-
-        public override void Dispose()
-        {
-            ship.Enabled = true;
-
-            if (!explosion.IsDestroyedViaLifetimeExpiration)
-                explosion.Destroy();
-            brokenShip.Destroy();
+            brokenShip.Setup(ship.Position, ship.Value, randomDir * settings.explosionForce);
         }
 
         public override void Tick(float deltaTime)
         {
         }
 
+        public override void FixedTick(float fixedDeltaTime)
+        {
+        }
+
         [Serializable]
         public class Settings
         {
+            public static Settings Default = new() { explosionForce = 1f };
+
             public float explosionForce;
         }
     }

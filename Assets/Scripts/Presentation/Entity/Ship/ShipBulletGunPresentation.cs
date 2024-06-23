@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroid.Presentation.Entity.Ship
 {
-    public class ShipGunPresentation : MonoBehaviour, IShipGun
+    public class ShipBulletGunPresentation : MonoBehaviour, IShipGun
     {
         [SerializeField] public Transform leftBulletPoint;
         [SerializeField] public Transform rightBulletPoint;

@@ -1,4 +1,4 @@
-﻿namespace Asteroid.GameLogic.Ship
+﻿namespace Asteroid.GameLogic.TheShip
 {
     public enum ShipStates
     {

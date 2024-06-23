@@ -9,11 +9,11 @@ namespace Asteroid.Presentation.Entity.Ship
 
         private Vector3 velocity;
 
-        public void Setup(Vector2 position, Quaternion rotation, Vector3 velocity)
+        public void Setup(Vector2 position, Quaternion rotation, Vector3 velocityForce)
         {
             transform.position = position;
             transform.rotation = rotation;
-            this.velocity = velocity;
+            velocity = velocityForce;
         }
 
         public void Destroy()

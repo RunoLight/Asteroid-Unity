@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Asteroid.GameLogic.ConcreteFactory;
 using Asteroid.GameLogic.EntityManagement.Manager;
-using Asteroid.GameLogic.Ship;
 using Asteroid.GameLogic.SpawnStrategy;
+using Asteroid.GameLogic.TheShip;
 using Asteroid.GameLogic.UseCases;
 using Asteroid.Presentation.Abstractions;
 using Asteroid.Presentation.Entity.Abstractions;
@@ -16,9 +16,9 @@ namespace Asteroid.GameLogic
 {
     public class GameController : IDisposable
     {
-        private readonly ShipController ship;
-        private readonly ShipGunController shipGun;
-        private readonly ShipLaserGunController shipLaserGun;
+        private readonly Ship ship;
+        private readonly ShipBulletGuns shipGun;
+        private readonly ShipLaserGun shipLaserGun;
 
         private readonly AsteroidManager asteroidManager;
         private readonly UfoManager ufoManager;
@@ -41,7 +41,7 @@ namespace Asteroid.GameLogic
             IGameplayUiScreen gameplayUiScreen, IUiScreen waitingToStartUi, IGameOverUiScreen gameOverUi,
             Camera camera,
             IShipPresentation shipPresentation,
-            IShipGun shipGunPresentation, IShipLaserGun shipLaserGunPresentation,
+            IShipGun shipGunPresentation, IShipLaserGunPresentation shipLaserGunPresentationPresentation,
             IFactory<IShipExplosion> explosionFactory, IFactory<IBrokenShip> brokenShipFactory,
             IFactory<IAsteroidPresentation> asteroidPresentationFactory,
             IFactory<IBulletPresentation> bulletPresentationFactory,
@@ -62,10 +62,10 @@ namespace Asteroid.GameLogic
 
             teleportWhenOutOfScreenUseCase = new TeleportWhenOutOfScreenUseCase(levelHelper);
 
-            shipGun = new ShipGunController(shipGunPresentation);
-            shipLaserGun = new ShipLaserGunController(shipLaserGunPresentation);
+            shipGun = new ShipBulletGuns(shipGunPresentation);
+            shipLaserGun = new ShipLaserGun(shipLaserGunPresentationPresentation);
 
-            ship = new ShipController(
+            ship = new Ship(
                 shipPresentation,
                 shipGun, shipLaserGun,
                 explosionFactory, brokenShipFactory,
@@ -89,7 +89,7 @@ namespace Asteroid.GameLogic
                 new BulletFactory(bulletPresentationFactory), bulletPresentationMemoryPool
             );
 
-            ship.ChangeState(ShipStates.WaitingToStart);
+            ship.ChangeState(Ship.StateBeforeGame);
         }
 
         private void OnShipStatusUpdate(Vector2 position, Quaternion rotation, Vector2 velocity)
@@ -171,7 +171,7 @@ namespace Asteroid.GameLogic
 
         private void EnableUiScreen(IUiScreen screenToEnable)
         {
-            foreach (IUiScreen screen in AllUiScreens)
+            foreach (var screen in AllUiScreens)
             {
                 screen.SetActive(screen == screenToEnable);
             }
@@ -265,7 +265,7 @@ namespace Asteroid.GameLogic
 
             ufoManager.Start();
             asteroidManager.Start();
-            ship.ChangeState(ShipStates.Moving);
+            ship.ChangeState(Ship.StateGameplay);
 
             state = GameStates.Playing;
 

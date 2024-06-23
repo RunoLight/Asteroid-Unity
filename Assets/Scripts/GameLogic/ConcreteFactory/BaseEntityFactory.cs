@@ -23,7 +23,7 @@ namespace Asteroid.GameLogic.ConcreteFactory
 
         protected TEntity Spawn(Vector2 position, Vector2 velocity, float scale)
         {
-            TEntity entity = new TEntity
+            var entity = new TEntity
             {
                 Presentation = presentationFactory.Create(),
                 Scale = scale,

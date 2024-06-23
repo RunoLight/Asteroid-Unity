@@ -1,6 +1,6 @@
 using System;
 
-namespace Asteroid.GameLogic.Ship.States
+namespace Asteroid.GameLogic.TheShip.States
 {
     public abstract class ShipState : IDisposable
     {
@@ -17,7 +17,7 @@ namespace Asteroid.GameLogic.Ship.States
         {
             // optionally overridden
         }
-        
+
         public virtual void OnCollision()
         {
             // optionally overridden

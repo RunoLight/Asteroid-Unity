@@ -13,7 +13,7 @@ namespace Asteroid.EntryPoint
     public class EntryPoint : MonoBehaviour
     {
         [SerializeField] private ShipPresentation shipPresentation;
-        [SerializeField] private ShipGunPresentation shipGunPresentation;
+        [SerializeField] private ShipBulletGunPresentation shipBulletGunPresentation;
         [SerializeField] private ShipLaserGunPresentation shipLaserGunPresentation;
         [SerializeField] private AsteroidPresentation asteroidPresentationPrefab;
         [SerializeField] private BulletPresentation bulletPresentationPrefab;
@@ -52,7 +52,7 @@ namespace Asteroid.EntryPoint
                 gameplayUiScreen, waitingForStartUiScreen, gameOverUiScreen,
                 gameCamera,
                 shipPresentation,
-                shipGunPresentation, shipLaserGunPresentation,
+                shipBulletGunPresentation, shipLaserGunPresentation,
                 new MonoFactory<ShipExplosion>(explosion, true, null),
                 new MonoFactory<BrokenShip>(brokenShip, true, null),
                 new MonoFactory<AsteroidPresentation>(asteroidPresentationPrefab, true, asteroidParent),

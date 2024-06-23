@@ -4,6 +4,6 @@ namespace Asteroid.Presentation.Abstractions
 {
     public interface IObjectPositionAdapter
     {
-        public Vector2 Position { get; set; }
+        public Vector2 Value { get; set; }
     }
 }

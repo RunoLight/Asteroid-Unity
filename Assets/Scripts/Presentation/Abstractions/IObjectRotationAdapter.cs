@@ -4,6 +4,6 @@ namespace Asteroid.Presentation.Abstractions
 {
     public interface IObjectRotationAdapter
     {
-        public Quaternion Rotation { get; set; }
+        public Quaternion Value { get; set; }
     }
 }
